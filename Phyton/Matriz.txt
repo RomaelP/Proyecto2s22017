@@ -1,0 +1,38 @@
+digraph G{
+rankdir=UD; 
+node [shape=box];
+{ 
+ rank=min; 
+m[label=Matriz]; 
+x7797121111[label="Mayo"]; 
+x799911611798114101[label="Octubre"]; 
+x7811111810510110998114101[label="Noviembre"]; 
+} 
+{ 
+ rank=same; 
+f50484949[label="2011"]; 
+n50[label="27"]; 
+} 
+{ 
+ rank=same; 
+f50484955[label="2017"]; 
+n49[label="17"]; 
+} 
+{ 
+ rank=max; 
+f50484956[label="2018"]; 
+n51[label="20"]; 
+} 
+x7797121111 -> x799911611798114101; 
+x799911611798114101 -> x7811111810510110998114101; 
+f50484949 -> f50484955[rankdir=UD]; 
+f50484955 -> f50484956[rankdir=UD]; 
+x7797121111 -> n50; 
+x799911611798114101 -> n51; 
+x7811111810510110998114101 -> n49; 
+f50484949 -> n50[constraint=false]; 
+f50484955 -> n49[constraint=false]; 
+f50484956 -> n51[constraint=false]; 
+m ->x7797121111; 
+m ->f50484949; 
+}
