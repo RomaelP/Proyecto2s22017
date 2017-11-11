@@ -42,8 +42,24 @@ public class reservaciones extends HttpServlet {
             
             System.out.print(res);
         
-        //request.setAttribute("habitaciones", coneccionServidor.cadenaHabitaciones);
-        request.getRequestDispatcher("inicioUsuario.jsp").forward(request, response);
+        coneccionServidor.cadenaHabitaciones = "";
+            coneccionServidor cone = new coneccionServidor();
+            String Habitaciones = cone.obtenerHabitaciones();
+            //out.print(Habitaciones);
+            String [] cargarHabitaciones;
+            cargarHabitaciones =  Habitaciones.split("#");
+            
+            for(int i = 0; i<cargarHabitaciones.length; i++)
+            {
+                coneccionServidor.cadenaHabitaciones +=  "<div class=\"w3-third w3-margin-bottom\">"
+                        +  "<div class=\"w3-container w3-white\">"
+                        +  "<h3 class=\"w3-opacity\">Habitacion</h3>"
+                        +  "<h3>Habitacion " + cargarHabitaciones[i] +" <label><input type=\"radio\" name=\"optradio\" value=\"" + cargarHabitaciones[i] + "\"></h3>"
+                        + "</div>"
+                        + "</div>";
+            }
+            request.setAttribute("habitaciones", coneccionServidor.cadenaHabitaciones);
+            request.getRequestDispatcher("inicioUsuario.jsp").forward(request, response);
         }
         //limpiarVariables();
         

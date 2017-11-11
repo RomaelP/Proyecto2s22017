@@ -26,12 +26,13 @@ class ListaDoble():
         if self.inicio != None:
             temporal = self.inicio
             while True:
-                if temporal.usuario == usuario and temporal.contrasenia == contrasenia:
-                    return "True"
+                if temporal.usuario == usuario: 
+                    if temporal.contrasenia == contrasenia:
+                        return "True"
                 else:
                     temporal = temporal.siguiente
-                    if temporal == self.inicio:
-                        return "Datos erroneos"
+                if temporal == self.inicio:
+                    return "Datos erroneos"
         else:
             return "False"              
             
@@ -69,7 +70,7 @@ class ListaDoble():
             while temporal != None:
                 if temporal.usuario == usuario:
                     temporal.direccion == direccionNueva
-                    return "Direccion Modificada"
+                    return "Direccion Modificada: "+direccionNueva
                 else:
                     temporal = temporal.siguiente
             return "Usuario no Existe"
@@ -80,7 +81,7 @@ class ListaDoble():
             while  temporal != None:
                 if temporal.usuario == usuario:
                     temporal.telefono == telefonoNuevo
-                    return "Telefono Modificado"
+                    return "Telefono Modificado: "+telefonoNuevo +" de usuario: "+usuario
                 else:
                     temporal = temporal.siguiente
             return "Usuario no Existe"
@@ -91,7 +92,7 @@ class ListaDoble():
             while temporal != None:
                 if temporal.usuario == usuario:
                     temporal.edad = edadNueva
-                    return "Edad Modificada"
+                    return "Edad Modificada: "+edadNueva+" del usuario: "+usuario
                 else:
                     temporal = temporal.siguiente
             return "Usuario no Existe"

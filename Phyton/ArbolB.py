@@ -22,8 +22,8 @@ class ArbolB():
         self.todasLasHabitaciones = ""
         
     #CREAR NODO B
-    def crearNodoInsertar(self, idNombre, nombre, descripcion, fecha1, fecha2, habitacion):
-        nodob = nodoB(idNombre, nombre, descripcion, fecha1, fecha2, habitacion)
+    def crearNodoInsertar(self, idNombre, nombre, descripcion, fecha1, fecha2, habitacion, reservada):
+        nodob = nodoB(idNombre, nombre, descripcion, fecha1, fecha2, habitacion, reservada)
         self.InsertarArbolB(nodob, self.inicio)
         
     #INSERTAR NODO EN EL ARBOL B
@@ -298,5 +298,49 @@ class ArbolB():
                 while j <= nodo.cuentas:
                     self.RetornarArbolHabitaciones(nodo.ramas[j], nombreUsuario)
                     j+=1
+      
+    def actualizarH(self, idHabitacion):
+        self.actualizarReservacion(idHabitacion, self.inicio)
+        return "Nombre Actualizado"
+    
+    
+    def actualizarReservacion(self, idHabitacion, raiz):
+        nodo = raiz
+
+        if(nodo == None):
+            variable = "Hola Mundo"
+        else:
+            if (nodo.cuentas != 0):
+                k=1
+                while k <= nodo.cuentas:
+                    if nodo.claves[k - 1].Habitacion == idHabitacion:
+                        nodo.claves[k - 1].Reservada = "no"
+                        break
+                    k+=1
+                i=0
+                while i <= nodo.cuentas:
+                    if (nodo.ramas[i] != None):
+                        if (nodo.ramas[i].cuentas != 0):					
+                            hola = "Mundo xD"
+                    i+=1
+
+                j=0
+                while j <= nodo.cuentas:
+                    self.actualizarReservacion(idHabitacion, nodo.ramas[j])
+                    j+=1
                     
                     
+    def Modificar(self, idModificar, idNuevo):
+        self.InsertarNodosLista(self.inicio)
+        raizLista = claseListaB.retornarLista()
+        self.inicio = Pagina()
+
+        while raizLista != None:
+            if raizLista.index != None :
+                if raizLista.nodoArbolB.idNombre == idModificar:
+                    raizLista.nodoArbolB.idNombre = idNuevo
+                self.InsertarArbolB(raizLista.nodoArbolB, self.inicio)
+            raizLista = raizLista.siguiente		
+
+        claseListaB.Limpiar()
+        return self.inicio	

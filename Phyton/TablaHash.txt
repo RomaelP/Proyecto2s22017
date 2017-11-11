@@ -1,5 +1,0 @@
-digraph  G {  nodesep=.05;
-rankdir = LR;
-node[shape=record,width=.1,height=.1]; 
-node0 [label = "<f23> Codigo: 305 \nNombre: david  ",height=2.5];
- }

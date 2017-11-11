@@ -82,8 +82,11 @@ class webService():
         arbolAVL.agregarListaAVL(nuevoNodoLista)
         #_##########################################################################_AVL
         descripcion = ("El usaurio "+usuario+" reservo la habitacion: "+habitacion+" gastando un monto de Q"+monto+".00, pago con la tarjeta: "+tarjeta+", fecha de ingreso: "+ingreso+" y fecha de salida: "+salida)
-        arbolB.crearNodoInsertar(idfecha, usuario, descripcion, ingreso, salida,habitacion)
+        arbolB.crearNodoInsertar(idfecha, usuario, descripcion, ingreso, salida, habitacion, "si")
         #_##########################################################################_B
+        listaHabitaciones.actualizarReservada(habitacion)
+        #_####_Actualizar Datos de Habitacion
+        
         return "operacion realizada con exito"
     
     
@@ -92,7 +95,7 @@ class webService():
         cadena = listaHabitaciones.concatenarHabitaciones()
         return cadena
     
-    @app.route('/habitacionesUsuario')
+    @app.route('/habitacionesUsuario', methods = ['POST'])
     def habitacionesUsuario():
         nombUsuario = str(request.form['usuario'])
         cadena = arbolB.retornarHabitaciones(nombUsuario)
@@ -104,6 +107,25 @@ class webService():
         nuevoNombre = str(request.form['nuevoNombre'])
         respuesta = listaUsuarios.modificarContrasenia(usuario, contraNueva)
         return respuesta
+    
+    @app.route('/actualizarReservacion', methods=['POST'])
+    def actualizarReservacion():
+        idHabitacion = str(request.form['habitacion'])
+        arbolB.actualizarH(idHabitacion)
+        listaHabitaciones.actualizarReservacionDevuelta(idHabitacion)
+        return "Dato Actualizado"
+    
+    @app.route('/eliminarUsuario',methods=['POST'])
+    def eliminarUsuario():
+        nombre = str(request.form['usuario'])
+        listaUsuarios.eliminarUsuario(nombre)
+        return "Usuario eliminado "+nombre
+    
+    @app.route('/eliminarHabitacion', methods=['POST'])
+    def eliminarHabitacion():
+        habitacion = str(request.form['habitacion'])
+        res = listaHabitaciones.eliminarHabitacion(habitacion)
+        return res+": "+habitacion
     
     if __name__ == "__main__":
         app.run(debug=True, host='127.0.0.5')#IP para pruebas solo JSP

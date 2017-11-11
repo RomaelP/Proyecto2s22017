@@ -37,7 +37,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <br>
     <br>
     <a href="#apartment" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-fw fa-home"></i>Inicio</a>
+    
+    <div>
+        
+        <%if(null != request.getAttribute("informacion"))
+                {
+                    out.print(request.getAttribute("informacion"));
+                }
+                %>
+    </div>
   </div>
+
 </nav>
 
 <!-- Top menu on small screens -->

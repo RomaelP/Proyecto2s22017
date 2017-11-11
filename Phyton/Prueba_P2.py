@@ -6,12 +6,15 @@ from Matriz import Matriz
 from NodoMatriz import NodoMatriz
 from NodoHash import NodoHash
 from TablaHash import TablaHash
+from ArbolB import ArbolB
 
 claseArbolB = ArbolB()
 claseListaB = ListaB()
 listaDoble = ListaDoble()
 listaSimple = ListaSimple()
+arbolB = ArbolB()
 matriz = Matriz()
+
 tablaHash = TablaHash()
 
 if __name__ == "__main__":
@@ -29,38 +32,38 @@ if __name__ == "__main__":
         num = input("Ingrese una opcion: ")
         
         if num == 1:
-            listaDoble.insertarListaDoble("Roma", "123", "san Marcos", "589623","26")
-            listaDoble.insertarListaDoble("Isaac", "456", "san pedro", "589623","27")
-            listaDoble.insertarListaDoble("Perez", "789", "san Juan", "589623","28")
-            listaDoble.insertarListaDoble("Godinez", "1011", "san Pablo", "589623","29")
-            print "4 datos agregados\n"
+            print "Agregar Valores Arbol B"
+            arbolB.crearNodoInsertar(int("01022017"), "usuario1", "descripcion1", "20170201", "20170205", "551", "si")
+            arbolB.crearNodoInsertar(int("01052019"), "usuario2", "descripcion2", "20170201", "20170205", "551", "si")
+            arbolB.crearNodoInsertar(int("11062017"), "usuario3", "descripcion3", "20170201", "20170205", "551", "si")
+            arbolB.crearNodoInsertar(int("21092017"), "usuario4", "descripcion4", "20170201", "20170205", "551", "si")
+            arbolB.crearNodoInsertar(int("06082015"), "usuario5", "descripcion5", "20170201", "20170205", "551", "si")
+            arbolB.crearNodoInsertar(int("02022019"), "usuario6", "descripcion6", "20170201", "20170205", "551", "si")
         
         if num == 2:
-            print " mostrando datos: \n"
-            listaDoble.mostrarListaDoble()
+            print "graficar Arbol B"
+            arbolB.crearArchivo()
             
         if num == 3:
-            print "escribiendo archivo\n"
-            listaDoble.grabarArchivoListaDoble()
+            print "eliminar Arbol B"
+            arbolB.Eliminar(int("06082015"))
             
-        if num == 4:
-            print "Eliminando Usuario Perez"
-            listaDoble.eliminarUsuario("Perez")
+        #if num == 4:
+
             
-        if num == 5:
-            print "modificar **** "
-            respuesta = listaDoble.modificarDireccion("Roma", "")
-            print str(respuesta)
+        #if num == 5:
+
             
-        if num == 6:
-            listaSimple.agregarHabitacion("1", "5", "51")
-            listaSimple.agregarHabitacion("2", "4", "42")
-            listaSimple.agregarHabitacion("3", "3", "33")
-            listaSimple.agregarHabitacion("4", "2", "24")
-            listaSimple.agregarHabitacion("5", "1", "15")
-            print "4 habitaciones agregadas\n"
+        #if num == 6:
+ 
             
-        if num == 70:
+        #if num == 61:
+
+            
+        #if num == 62:
+
+            
+        #if num == 70:
             cadena =str(listaSimple.concatenarHabitaciones())
             print(cadena)
             print("Listado de codigo de Habitaciones")

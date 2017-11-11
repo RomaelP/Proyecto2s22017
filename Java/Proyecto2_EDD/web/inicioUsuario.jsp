@@ -195,6 +195,7 @@ function showDivs(n) {
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-button w3-xlarge w3-right w3-transparent"></i>
       <h2 class="w3-wide">TOTAL A PAGAR</h2>
+      
       <form action="reservaciones" method="POST">
       <p>El total a cancelar Es:</p>
       <h4><%= calcularTotal.Total %></h4>

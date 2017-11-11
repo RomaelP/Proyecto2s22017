@@ -1,4 +1,3 @@
-
 package Clases;
 
 import java.io.IOException;
@@ -12,20 +11,38 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author USuario1
  */
-public class elimanarHabitacion extends HttpServlet {
+public class devolverHabitaciones extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String habitacionX = request.getParameter("habitacion");
+            //---------------------------------------
+            String codHabitacion = request.getParameter("optradio");
             
-            coneccionServidor eliminar = new coneccionServidor();
-            String res = eliminar.eliminarHabitacion(habitacionX);
-            System.out.println(" "+res);
+            coneccionServidor devolver = new coneccionServidor();
+            String res = devolver.actualizarReservacion(codHabitacion);
+            //****************System.out.println(" "+res);
+        
+            String cadenaHabitaciones = "";
+            coneccionServidor conexion = new coneccionServidor();
+            cadenaHabitaciones = conexion.habitacionesUsuario(coneccionServidor.Usuario);
             
-            request.setAttribute("informacion", res);
-            request.getRequestDispatcher("modificar.jsp").forward(request, response);
+            String [] cargarHabitaciones;
+            cargarHabitaciones = cadenaHabitaciones.split("@");
+            
+            for(int i = 0; i < cargarHabitaciones.length; i++)
+            {
+                cadenaHabitaciones += "<div class=\"w3-third w3-margin-bottom\">"
+                        +  "<div class=\"w3-container w3-white\">"
+                        +  "<h3 class=\"w3-opacity\">Habitacion</h3>"
+                        +  "<h3>Habitacion " + cargarHabitaciones[i] +" <label><input type=\"radio\" name=\"optradio\" value=\"" + cargarHabitaciones[i] + "\"></h3>"
+                        + "</div>"
+                        + "</div>";
+            }
+            
+            request.setAttribute("habitaciones", cadenaHabitaciones);
+            request.getRequestDispatcher("misHabitaciones.jsp").forward(request, response);
         }
     }
 

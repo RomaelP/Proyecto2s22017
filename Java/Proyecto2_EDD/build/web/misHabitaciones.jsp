@@ -24,14 +24,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
 <center><h2 class="w3-text-green">MENU</h2></center>
 <h3>Usuario</h3>
-<h4 class="w3-text-green"><%= coneccionServidor.Usuario %></h4> 
+<center><h4 class="w3-text-green"><%= coneccionServidor.Usuario %></h4></center> 
   <div class="w3-bar-block">
         <form action="habitacionesUsuario" method="POST"> 
-        <p><button class="w3-bar-item w3-button w3-padding-16" type="submit"><i class="fa fa-building w3-margin-left"></i>Ver Mis Habitaciones </button></p>
+        <p><button class="w3-bar-item w3-button w3-padding-16" type="submit"><i class="fa fa-building w3-margin-left"></i>Ver Mis Reservaciones</button></p>
         </form> 
     
     <a href="inicioUsuario.jsp" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-arrow-circle-left w3-margin-left"></i> Reservaciones </a>
-  
   </div>
 </nav>
 
@@ -58,18 +57,26 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
       <div class="w3-display-bottomleft w3-container w3-black">
         <p>Habitacion</p>
       </div>
-
+        <hr>
   </div>
 
-
-  <div class="w3-container">
+    <form action="devolverHabitaciones" method="POST">  
+        <div class="w3-container w3-margin-top" id="habitaciones">
+            <h3>Habitaciones</h3>       
+        </div>
+        <div class="w3-row-padding w3-padding-6">
                 <%if(null != request.getAttribute("habitaciones"))
                 {
                     out.print(request.getAttribute("habitaciones"));
                 }
-                %>
-  </div>
-  <hr>
+                %>         
+        </div>
+        <div>
+            <button type="submit" class="w3-button w3-green w3-third"><i class="fa fa-fw fa-check-circle"></i>Devolver Habitacion</button>
+        </div>
+      </form>
+
+  
   
   <!-- Contact -->
 

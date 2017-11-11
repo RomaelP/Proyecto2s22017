@@ -3,5 +3,5 @@ class NodoListaSimple():
         self.numero = numero
         self.planta = planta
         self.codigo = codigo
-        self.reserevada = reservada
+        self.reservada = reservada
         self.siguiente = siguiente

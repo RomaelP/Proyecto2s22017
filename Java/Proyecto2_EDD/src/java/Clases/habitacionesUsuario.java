@@ -18,7 +18,6 @@ public class habitacionesUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            //out.print("llegue al servlet");
             
             String cadenaHabitaciones = "";
             coneccionServidor conexion = new coneccionServidor();
@@ -38,9 +37,9 @@ public class habitacionesUsuario extends HttpServlet {
             }
             
             request.setAttribute("habitaciones", cadenaHabitaciones);
-            request.getRequestDispatcher("").forward(request, response);
+            request.getRequestDispatcher("misHabitaciones.jsp").forward(request, response);
             
-            
+            //out.print("*******"+coneccionServidor.Usuario);
         }
     }
 

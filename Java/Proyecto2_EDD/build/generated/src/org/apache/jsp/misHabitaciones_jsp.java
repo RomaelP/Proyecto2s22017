@@ -64,9 +64,9 @@ public final class misHabitaciones_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("<nav class=\"w3-sidebar w3-light-grey w3-collapse w3-top\" style=\"z-index:3;width:260px\" id=\"mySidebar\">\n");
       out.write("<center><h2 class=\"w3-text-green\">MENU</h2></center>\n");
       out.write("<h3>Usuario</h3>\n");
-      out.write("<h4 class=\"w3-text-green\">");
+      out.write("<center><h4 class=\"w3-text-green\">");
       out.print( coneccionServidor.Usuario );
-      out.write("</h4> \n");
+      out.write("</h4></center> \n");
       out.write("  <div class=\"w3-bar-block\">\n");
       out.write("        <form action=\"habitacionesUsuario\" method=\"POST\"> \n");
       out.write("        <p><button class=\"w3-bar-item w3-button w3-padding-16\" type=\"submit\"><i class=\"fa fa-building w3-margin-left\"></i>Ver Mis Habitaciones </button></p>\n");
@@ -105,8 +105,18 @@ public final class misHabitaciones_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("\n");
       out.write("  <div class=\"w3-container\">\n");
+      out.write("                ");
+if(null != request.getAttribute("habitaciones"))
+                {
+                    out.print(request.getAttribute("habitaciones"));
+                }
+                
       out.write("\n");
+      out.write("                \n");
+      out.write("                <center><button type=\"submit\" class=\"w3-button w3-green w3-third\"><i class=\"fa fa-fw fa-check-circle\"></i>Devolver Habitacion</button></center>\n");
       out.write("  </div>\n");
+      out.write("  \n");
+      out.write("  \n");
       out.write("  <hr>\n");
       out.write("  \n");
       out.write("  <!-- Contact -->\n");

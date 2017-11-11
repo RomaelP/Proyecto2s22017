@@ -85,6 +85,34 @@ public class coneccionServidor {
     return res;
     }
     
+    public String actualizarReservacion(String codHabitacion)
+    {
+        RequestBody formBody = new FormEncodingBuilder()
+                .add("habitacion",codHabitacion)
+                .build();
+        String res = metodoConectar("actualizarReservacion", formBody);
+        System.out.println(" "+res);
+        return res;
+    }
+    
+    public String eliminarUsuario(String usuarioX)
+    {
+        RequestBody formBody = new FormEncodingBuilder()
+                .add("usuario",usuarioX)
+                .build();
+        String res = metodoConectar("eliminarUsuario", formBody);
+        return res;
+    }
+    
+    public String eliminarHabitacion(String habitacion)
+    {
+        RequestBody formBody = new FormEncodingBuilder()
+                .add("habitacion", habitacion)
+                .build();
+        String res = metodoConectar("eliminarHabitacion", formBody);
+        return res;
+    }
+    
     public static String metodoConectar(String metodoServidor, RequestBody formBody){//Metodo que hace la conexion, todos los metodos post lo llaman
     try{
         URL url = new URL("http://"+globalIpAModificar+":5000/" + metodoServidor);

@@ -21,14 +21,26 @@ class ListaSimple():
     def generarCodigoHabitacion(self, planta, habitacion):
         codigo = str(planta)+str(habitacion)
         return codigo
+     
+     
+    def actualizarReservacionDevuelta(self, idHabitacion):
+        aux = self.inicio
+        while aux:
+            if aux.codigo == idHabitacion:
+                aux.reservada = "no"
+            aux = aux.siguiente
+            if aux == self.inicio:
+                break			
+        return "true"     
         
         
     def concatenarHabitaciones(self):
         self.cadenaHabitaciones = ""
+        temporal=NodoListaSimple()
         if self.inicio != None:
             temporal = self.inicio
         while True:
-            if temporal.reserevada == "no":
+            if temporal.reservada == "no":
                 self.cadenaHabitaciones += str(temporal.codigo) + "#"
                     
             temporal = temporal.siguiente
@@ -79,6 +91,14 @@ class ListaSimple():
             
             while True:
                 temporal2 = temporal.siguiente
+                if temporal2.codigo == codigo:
+                    temporal.siguiente = temporal2.siguiente
+                    return "Habitacion Eliminada"
+                else:
+                    temporal = temporal.siguiente
+                if temporal2 == self.inicio:
+                    break
+            return "No se encontro la Habitacion"
     
             
     def grabarArchivoListaSimple(self):
